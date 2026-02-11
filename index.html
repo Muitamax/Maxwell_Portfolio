@@ -3,25 +3,46 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Maxwell Muruthi | Terminal Portfolio</title>
+<title>Maxwell Muruthi | Terminal</title>
 
 <style>
 body {
-  background-color: #0d1117;
+  margin: 0;
+  background: black;
   color: #00ff99;
   font-family: "Fira Code", monospace;
-  margin: 0;
-  padding: 20px;
+  overflow: hidden;
 }
 
+/* MATRIX CANVAS */
+canvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 0;
+}
+
+/* TERMINAL */
 #terminal {
+  position: relative;
+  z-index: 1;
+  padding: 40px;
   max-width: 900px;
   margin: auto;
+  display: none;
 }
 
 .output {
   white-space: pre-wrap;
-  margin-bottom: 10px;
+  margin-bottom: 15px;
+}
+
+.command-line {
+  display: flex;
+}
+
+.prompt {
+  margin-right: 5px;
 }
 
 input {
@@ -34,30 +55,19 @@ input {
   outline: none;
 }
 
-.command-line {
-  display: flex;
-}
-
-.prompt {
-  margin-right: 5px;
-}
-
-a {
-  color: #00ffff;
-  text-decoration: none;
-}
-a:hover {
-  text-decoration: underline;
-}
+a { color: cyan; text-decoration: none; }
+a:hover { text-decoration: underline; }
 </style>
 </head>
 
 <body>
 
+<canvas id="matrix"></canvas>
+
 <div id="terminal">
-  <div class="output">
-Welcome to Maxwell Muruthi's Portfolio Terminal  
-Type "help" to see available commands.
+  <div class="output" id="output">
+Welcome to Maxwell Muruthi's Portfolio  
+Type "help" to begin.
   </div>
 
   <div class="command-line">
@@ -67,60 +77,102 @@ Type "help" to see available commands.
 </div>
 
 <script>
+/* MATRIX EFFECT */
+const canvas = document.getElementById("matrix");
+const ctx = canvas.getContext("2d");
+
+canvas.height = window.innerHeight;
+canvas.width = window.innerWidth;
+
+const letters = "01ABCDEFGHIJKLMNOPQRSTUVWXYZ$#@%&";
+const fontSize = 14;
+const columns = canvas.width / fontSize;
+const drops = [];
+
+for(let x = 0; x < columns; x++)
+  drops[x] = 1;
+
+function draw() {
+  ctx.fillStyle = "rgba(0, 0, 0, 0.05)";
+  ctx.fillRect(0, 0, canvas.width, canvas.height);
+  ctx.fillStyle = "#00ff99";
+  ctx.font = fontSize + "px monospace";
+
+  for(let i = 0; i < drops.length; i++) {
+    const text = letters[Math.floor(Math.random() * letters.length)];
+    ctx.fillText(text, i * fontSize, drops[i] * fontSize);
+
+    if(drops[i] * fontSize > canvas.height && Math.random() > 0.975)
+      drops[i] = 0;
+
+    drops[i]++;
+  }
+}
+
+let matrixInterval = setInterval(draw, 33);
+
+/* BOOT SEQUENCE */
+const bootText = [
+"Booting MaxwellOS v3.0...",
+"Initializing developer modules...",
+"Loading projects...",
+"Authenticating user...",
+"Access granted ✔",
+"Launching terminal..."
+];
+
+let bootIndex = 0;
+
+function typeBoot() {
+  if (bootIndex < bootText.length) {
+    console.log(bootText[bootIndex]);
+    bootIndex++;
+    setTimeout(typeBoot, 600);
+  } else {
+    clearInterval(matrixInterval);
+    canvas.style.display = "none";
+    document.body.style.overflow = "auto";
+    document.getElementById("terminal").style.display = "block";
+  }
+}
+
+setTimeout(typeBoot, 2000);
+
+/* TERMINAL LOGIC */
 const input = document.getElementById("input");
-const terminal = document.querySelector(".output");
+const output = document.getElementById("output");
 
 const commands = {
   help: `
 Available commands:
-about      → Who I am
-projects   → View my work
-skills     → Tech stack
-contact    → Get in touch
-clear      → Clear terminal
+about
+projects
+skills
+contact
+clear
 `,
-
   about: `
-Hi, I'm Maxwell Muruthi
-Software Developer | Creative Problem Solver | Code Enthusiast
+Maxwell Muruthi
+Software Developer | Problem Solver
 
-Currently building:
-• Online Auction Information Management System
-• Supermarket Registry & Stock System
-• Weather Lookup UI
-• E-Commerce Website
-
-Currently learning:
-Laravel | Node.js | OpenAI | Docker
-
-Fun fact:
-I debug with coffee ☕ and code with vibes ✨
+Building scalable systems using:
+Laravel | Node.js | React | AI APIs
 `,
-
   skills: `
-Tech Stack:
-HTML | CSS | JavaScript | PHP | Laravel
-Node.js | MySQL | MongoDB | React
-Python | Docker | Git | GitHub
+HTML | CSS | JavaScript | PHP
+Laravel | Node.js | MySQL
+MongoDB | Docker | Git
 `,
-
   projects: `
-Projects:
-
 Supermarket Registry System
-→ https://github.com/maxwellmuruthi/supermarket-stock-system
-
 Weather UI App
-→ https://github.com/maxwellmuruthi/weather-ui
-
-E-Commerce Site
-→ https://github.com/maxwellmuruthi/ecommerce-site
+E-Commerce Platform
+Auction Management System
 `,
-
   contact: `
 Email: muitamaxwell@gmail.com
-LinkedIn: https://linkedin.com/in/maxwellmuruthi
-GitHub: https://github.com/Muitamax
+LinkedIn: linkedin.com/in/maxwellmuruthi
+GitHub: github.com/Muitamax
 `
 };
 
@@ -129,12 +181,12 @@ input.addEventListener("keydown", function(e) {
     const value = input.value.trim().toLowerCase();
 
     if (value === "clear") {
-      terminal.textContent = "";
+      output.textContent = "";
     } else if (commands[value]) {
-      terminal.textContent += `\nmaxwell@portfolio:~$ ${value}\n`;
-      terminal.textContent += commands[value] + "\n";
+      output.textContent += `\nmaxwell@portfolio:~$ ${value}\n`;
+      output.textContent += commands[value];
     } else {
-      terminal.textContent += `\nCommand not found: ${value}\n`;
+      output.textContent += `\nCommand not found: ${value}\n`;
     }
 
     input.value = "";
@@ -144,5 +196,3 @@ input.addEventListener("keydown", function(e) {
 
 </body>
 </html>
-
-
