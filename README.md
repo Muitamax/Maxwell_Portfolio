@@ -5,9 +5,6 @@
   <a href="mailto:muitamaxwell@gmail.com">
     <img src="https://img.shields.io/badge/Email-Contact_Me-EA4335?style=for-the-badge&logo=gmail">
   </a>
-  <a href="https://mkuvi.me/resume.pdf">
-    <img src="https://img.shields.io/badge/Resume-Download-000000?style=for-the-badge&logo=adobeacrobatreader">
-  </a>
 </p>
 <!-- Animated Header -->
 <p align="center">
@@ -35,6 +32,18 @@ I design and build scalable software systems with a focus on architecture, maint
 I approach development like infrastructure engineering — every component should serve a defined responsibility within a scalable system.
 
 ---
+## Cybersecurity & Networking Development
+
+I actively build hands-on cybersecurity skills through:
+
+- Practical penetration testing labs on TryHackMe.com
+- Network fundamentals and routing concepts via Cisco NetAcad (CCNA training path)
+- Vulnerability analysis fundamentals
+- Linux-based system navigation and command-line operations
+- Network traffic analysis basics
+
+My focus is to integrate secure coding principles into backend system design.
+
 
 ## Technical Stack
 
