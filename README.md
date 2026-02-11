@@ -1,3 +1,14 @@
+<p align="center">
+  <a href="https://linkedin.com/in/maxwellmuruthi">
+    <img src="https://img.shields.io/badge/LinkedIn-Professional_Profile-0A66C2?style=for-the-badge&logo=linkedin">
+  </a>
+  <a href="mailto:muitamaxwell@gmail.com">
+    <img src="https://img.shields.io/badge/Email-Contact_Me-EA4335?style=for-the-badge&logo=gmail">
+  </a>
+  <a href="https://mkuvi.me/resume.pdf">
+    <img src="https://img.shields.io/badge/Resume-Download-000000?style=for-the-badge&logo=adobeacrobatreader">
+  </a>
+</p>
 <!-- Animated Header -->
 <p align="center">
   <img src="https://readme-typing-svg.demolab.com?font=Fira+Code&size=26&duration=3000&pause=1000&color=00FF99&center=true&vCenter=true&width=800&lines=Maxwell+Muruthi;Software+Engineer+%7C+Systems+Builder;Full-Stack+Developer+%7C+Architecture+Focused;Building+Scalable+Digital+Systems" />
