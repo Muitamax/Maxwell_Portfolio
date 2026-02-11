@@ -1,61 +1,147 @@
-# Maxwell_Portfolio
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Maxwell Muruthi | Terminal Portfolio</title>
 
-<h1 align="center">Hi 👋, I'm Maxwell Muruthi</h1>
-<h3 align="center">Software Developer | Creative Problem Solver | Code Enthusiast</h3>
+<style>
+body {
+  background-color: #0d1117;
+  color: #00ff99;
+  font-family: "Fira Code", monospace;
+  margin: 0;
+  padding: 20px;
+}
 
-<p align="center">
-  <img src="https://readme-typing-svg.demolab.com?font=Fira+Code&weight=500&size=22&pause=1000&center=true&width=435&lines=Web+Developer+%7C+Full-stack+Builder;I+love+turning+ideas+into+reality;Always+learning+new+tech" alt="Typing SVG" />
-</p>
+#terminal {
+  max-width: 900px;
+  margin: auto;
+}
 
----
+.output {
+  white-space: pre-wrap;
+  margin-bottom: 10px;
+}
 
-### 💡 About Me
+input {
+  background: none;
+  border: none;
+  color: #00ff99;
+  font-family: inherit;
+  font-size: 16px;
+  width: 100%;
+  outline: none;
+}
 
-- 🔭 I’m currently working on:
-- Online Auction Information Management System
-  - Supermarket Registry and Stock Information System 🛒
-  - Weather Lookup UI 🌤️
-  - E-Commerce Website 🛍️
+.command-line {
+  display: flex;
+}
 
-- 🌱 Currently learning: **Laravel**, **Node.js**, **OpenAI**, **Docker**
-- 📫 Reach me at: [muitamaxwell@gmail.com](mailto:muitamaxwell@gmail.com)
-- ⚡ Fun fact: I debug with coffee ☕ and code with vibes ✨
+.prompt {
+  margin-right: 5px;
+}
 
----
+a {
+  color: #00ffff;
+  text-decoration: none;
+}
+a:hover {
+  text-decoration: underline;
+}
+</style>
+</head>
 
-### 🛠️ Tech Stack
-<p>
-  <img src="https://skillicons.dev/icons?i=html,css,js,php,laravel,nodejs,mysql,mongodb,react,python,docker,git,vscode,github" />
-</p>
+<body>
 
----
+<div id="terminal">
+  <div class="output">
+Welcome to Maxwell Muruthi's Portfolio Terminal  
+Type "help" to see available commands.
+  </div>
 
-### 📊 GitHub Stats
+  <div class="command-line">
+    <span class="prompt">maxwell@portfolio:~$</span>
+    <input type="text" id="input" autofocus>
+  </div>
+</div>
 
-<p align="center">
-  <img src="https://github-readme-stats.vercel.app/api?username=Muitamax&show_icons=true&theme=tokyonight" width="48%" />
-  <img src="https://streak-stats.demolab.com/?user=Muitamax&theme=tokyonight" width="48%" />
-</p>
+<script>
+const input = document.getElementById("input");
+const terminal = document.querySelector(".output");
 
----
+const commands = {
+  help: `
+Available commands:
+about      → Who I am
+projects   → View my work
+skills     → Tech stack
+contact    → Get in touch
+clear      → Clear terminal
+`,
 
-### 🚀 Projects Showcase
+  about: `
+Hi, I'm Maxwell Muruthi
+Software Developer | Creative Problem Solver | Code Enthusiast
 
-| Project | Description |
-|--------|-------------|
-| 🛒 [Supermarket Registry System](https://github.com/maxwellmuruthi/supermarket-stock-system) | Inventory and stock control web app |
-| ☁️ [Weather UI App](https://github.com/maxwellmuruthi/weather-ui) | Search-based weather lookup frontend |
-| 🛍️ [E-Commerce Site](https://github.com/maxwellmuruthi/ecommerce-site) | Product listing, cart, and checkout flow |
+Currently building:
+• Online Auction Information Management System
+• Supermarket Registry & Stock System
+• Weather Lookup UI
+• E-Commerce Website
 
----
+Currently learning:
+Laravel | Node.js | OpenAI | Docker
 
-### 🔗 Connect With Me
+Fun fact:
+I debug with coffee ☕ and code with vibes ✨
+`,
 
-<p>
-  <a href="mailto:muitamaxwell@gmail.com">
-    <img src="https://img.shields.io/badge/Email-%23EA4335?logo=gmail&logoColor=white" />
-  </a>
-  <a href="https://linkedin.com/in/maxwellmuruthi">
-    <img src="https://img.shields.io/badge/LinkedIn-%230077B5?logo=linkedin&logoColor=white" />
-  </a>
-</p>
+  skills: `
+Tech Stack:
+HTML | CSS | JavaScript | PHP | Laravel
+Node.js | MySQL | MongoDB | React
+Python | Docker | Git | GitHub
+`,
+
+  projects: `
+Projects:
+
+Supermarket Registry System
+→ https://github.com/maxwellmuruthi/supermarket-stock-system
+
+Weather UI App
+→ https://github.com/maxwellmuruthi/weather-ui
+
+E-Commerce Site
+→ https://github.com/maxwellmuruthi/ecommerce-site
+`,
+
+  contact: `
+Email: muitamaxwell@gmail.com
+LinkedIn: https://linkedin.com/in/maxwellmuruthi
+GitHub: https://github.com/Muitamax
+`
+};
+
+input.addEventListener("keydown", function(e) {
+  if (e.key === "Enter") {
+    const value = input.value.trim().toLowerCase();
+
+    if (value === "clear") {
+      terminal.textContent = "";
+    } else if (commands[value]) {
+      terminal.textContent += `\nmaxwell@portfolio:~$ ${value}\n`;
+      terminal.textContent += commands[value] + "\n";
+    } else {
+      terminal.textContent += `\nCommand not found: ${value}\n`;
+    }
+
+    input.value = "";
+  }
+});
+</script>
+
+</body>
+</html>
+
