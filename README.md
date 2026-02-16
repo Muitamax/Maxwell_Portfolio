@@ -155,11 +155,11 @@ Goal: Build AI-enhanced systems, not AI gimmicks.
 
 <p align="center">
   <img src="https://github-readme-stats.vercel.app/api?username=Muitamax&show_icons=true&theme=tokyonight&hide_border=true" width="48%" />
-  <img src="https://streak-stats.demolab.com/?user=maxwellmuruthi&theme=tokyonight&hide_border=true" width="48%" />
+  <img src="https://streak-stats.demolab.com/?user=Muitamax&theme=tokyonight&hide_border=true" width="48%" />
 </p>
 
 <p align="center">
-  <img src="https://github-readme-stats.vercel.app/api/top-langs/?username=maxwellmuruthi&layout=compact&theme=tokyonight&hide_border=true" width="50%" />
+  <img src="https://github-readme-stats.vercel.app/api/top-langs/?username=Muitamax&layout=compact&theme=tokyonight&hide_border=true" width="50%" />
 </p>
 
 
